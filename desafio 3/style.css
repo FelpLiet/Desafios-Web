@@ -1,0 +1,135 @@
+.color-0 {
+  color: rgb(10, 113, 197);
+}
+
+.color-1 {
+  color: rgb(212, 81, 195);
+}
+
+.color-2 {
+  color: rgb(14, 212, 14);
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: rgb(42, 42, 43);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.container h1 {
+  font-weight: 500;
+  font-size: 2.5rem;
+
+}
+
+.tempo {
+  padding: 10px 0;
+  color: white;
+}
+
+.pontos {
+  padding: 10px 0;
+  color: white;
+}
+
+.jogo {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 400px;
+  width: 80%;
+  max-width: 960px;
+  border: 1px solid #838080;
+  border-radius: 15px;
+}
+
+.iniciar {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.parar {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ball {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.ball.ball-0 {
+  background-color: rgb(10, 113, 197);
+}
+
+.ball.ball-1 {
+  background-color: rgb(212, 81, 195);
+}
+
+.ball.ball-2 {
+  background-color: rgb(14, 212, 14);
+}
+
+.informacoes {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.historico {
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  font-size: 1.5em;
+}
+
+.historico div {
+  margin: 10px 0;
+  font-size: 0.7em;
+}
+
+.pontoHistorico div{
+  font-size: 1em;
+}
+
+
+.comoJogar {
+  margin: 20px;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  font-size: 1.5em;
+}
+
+.comoJogar p {
+  font-size: 0.7em;
+  margin: 10px 0;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="task-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <input type="text" id="edit-task-text" placeholder="Título da Tarefa" />
+        <input type="text" id="edit-task-category" placeholder="Categoria" />
+        <textarea
+          id="edit-task-description"
+          placeholder="Descrição da Tarefa"
+        ></textarea>
+        <button id="save-task">Salvar</button>
+        <button id="delete-task">Apagar</button>
+      </div>
+    </div>
+    <div class="todo-container">
+      <h1>Lista de Tarefas</h1>
+      <div class="todo-task">
+        <div class="titulo-task">
+          <input
+            type="text"
+            id="new-task"
+            placeholder="Adicione uma nova tarefa"
+          />
+          <div id="task-error" class="error-message">Por favor, insira um título para a tarefa.</div>
+        </div>
+        <div class="categoria-task">
+          <input type="text" id="new-category" placeholder="Categoria" />
+          <div id="category-error" class="error-message">Por favor, insira uma categoria para a tarefa.</div>
+        </div>
+        <button id="add-task">Adicionar</button>
+      </div>
+      <div class="filter-category">
+        <label for="filter-category">Filtrar por categoria:</label>
+        <select id="filter-category">
+          <option value="all">Todas</option>
+        </select>
+      </div>
+      <ul id="task-list">
+        <li>
+          <input type="checkbox" />
+          <span>Estudar JavaScript</span>
+          <button class="delete-task">X</button>
+        </li>
+      </ul>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
