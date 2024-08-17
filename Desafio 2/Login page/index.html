@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="assets/Atom_preto.png" />
+    
+    <title>Atom</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="login-box">
+        <img
+          class="logo-mobile"
+          src="assets/atom2.png"
+          class="avatar"
+          alt="Avatar"
+        />
+        <img
+          class="logo-desktop"
+          src="assets/atom.png"
+          class="avatar"
+          alt="Avatar"
+        />
+        <div class="form">
+          <h1>Bem vindo a ATOM</h1>
+          <form action="login.php" method="post">
+            <input
+              type="text"
+              name="username"
+              placeholder="Usuário"
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Senha"
+              required
+            />
+            <button>Login</button>
+            <div class="ajuda">
+              <a href="forgot-password.php">Esqueceu a senha?</a>
+              <a href="register.php">Registrar-se agora</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
