@@ -19,7 +19,6 @@ const REDUCED_INTERVAL = 500;
 const SCORE_TO_REDUCE_INTERVAL = 20;
 const TIME_TO_REDUCE_INTERVAL = 30;
 
-
 const gameDiv = document.querySelector(".jogo");
 const timeDiv = document.querySelector(".tempo");
 const pontosDiv = document.querySelector(".pontos");
@@ -54,8 +53,6 @@ document.addEventListener("keydown", (event) => {
     ballRemove({ target: hoveredBall });
   }
 });
-
-
 
 let pontos = 0;
 

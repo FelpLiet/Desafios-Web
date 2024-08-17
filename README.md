@@ -36,9 +36,9 @@ Arquivos:
 - [desafio 4/guessTheNumber/script.js](desafio%204/guessTheNumber/script.js)
 - [desafio 4/guessTheNumber/styles.css](desafio%204/guessTheNumber/styles.css)
 
-## Desafio 5: Pra onde eu vou?
+## Desafio 5: O que eu vou fazer?
 
-Este e uma site onde voce pode adicionar suas tarefas diarias  e dividi-las em categorias e adicionar descrições.
+Este e uma site onde voce pode adicionar suas tarefas diarias e dividi-las em categorias e adicionar descrições.
 
 Arquivos:
 - [desafio 5/index.html](desafio%205/index.html)
