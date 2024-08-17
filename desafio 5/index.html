@@ -10,7 +10,9 @@
     <div id="task-modal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
+        <label for="edit-task-text">Titulo da tarefa</label>
         <input type="text" id="edit-task-text" placeholder="Título da Tarefa" />
+        <label for="edit-task-category">Categoria</label>
         <input type="text" id="edit-task-category" placeholder="Categoria" />
         <textarea
           id="edit-task-description"
@@ -27,13 +29,17 @@
           <input
             type="text"
             id="new-task"
-            placeholder="Adicione uma nova tarefa"
+            placeholder="Titula da tarefa"
           />
-          <div id="task-error" class="error-message">Por favor, insira um título para a tarefa.</div>
+          <div id="task-error" class="error-message">
+            Por favor, insira um título para a tarefa.
+          </div>
         </div>
         <div class="categoria-task">
           <input type="text" id="new-category" placeholder="Categoria" />
-          <div id="category-error" class="error-message">Por favor, insira uma categoria para a tarefa.</div>
+          <div id="category-error" class="error-message">
+            Por favor, insira uma categoria para a tarefa.
+          </div>
         </div>
         <button id="add-task">Adicionar</button>
       </div>
@@ -43,13 +49,7 @@
           <option value="all">Todas</option>
         </select>
       </div>
-      <ul id="task-list">
-        <li>
-          <input type="checkbox" />
-          <span>Estudar JavaScript</span>
-          <button class="delete-task">X</button>
-        </li>
-      </ul>
+      <ul id="task-list"></ul>
     </div>
     <script src="script.js"></script>
   </body>

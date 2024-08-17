@@ -20,7 +20,7 @@ function addTask() {
   errorMessage.style.display = "none";
   categoryErrorMessage.style.display = "none";
 
-  if(!taskText) {
+  if (!taskText) {
     errorMessage.style.display = "block";
     taskInput.classList.add("input-error");
     return;
@@ -28,7 +28,7 @@ function addTask() {
     taskInput.classList.remove("input-error");
   }
 
-  if(!category) {
+  if (!category) {
     categoryErrorMessage.style.display = "block";
     document.getElementById("new-category").classList.add("input-error");
     return;
@@ -46,6 +46,9 @@ function addTask() {
 
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
+  checkbox.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
   checkbox.addEventListener("change", (event) => {
     event.stopPropagation();
     toggleTask(event);
@@ -91,6 +94,12 @@ function deleteTask(event) {
 function toggleTask(event) {
   const task = event.target.parentElement;
   task.classList.toggle("done");
+
+  if (task.classList.contains("done")) {
+    task.parentElement.appendChild(task);
+  } else {
+    task.parentElement.insertBefore(task, task.parentElement.firstChild);
+  }
 }
 
 function filterTasks() {
@@ -133,14 +142,21 @@ function openEditModal(task, span) {
   document.getElementById("edit-task-description").value = task.description;
 
   modal.style.display = "block";
+  modal.classList.add("show");
 
   closeModal.onclick = function () {
-    modal.style.display = "none";
+    modal.classList.remove("show");
+    setTimeout(() => {
+      modal.style.display = "none";
+    }, 300);
   };
 
   window.onclick = function (event) {
     if (event.target == modal) {
-      modal.style.display = "none";
+      modal.classList.remove("show");
+      setTimeout(() => {
+        modal.style.display = "none";
+      }, 300);
     }
   };
 
@@ -150,13 +166,19 @@ function openEditModal(task, span) {
     task.description = document.getElementById("edit-task-description").value;
     span.textContent = task.text;
     span.title = task.description;
-    modal.style.display = "none";
+    modal.classList.remove("show");
+    setTimeout(() => {
+      modal.style.display = "none";
+    }, 300);
   };
 
   deleteButton.onclick = function () {
     const taskIndex = tasks.indexOf(task);
     tasks.splice(taskIndex, 1);
     span.parentElement.remove();
-    modal.style.display = "none";
+    modal.classList.remove("show");
+    setTimeout(() => {
+      modal.style.display = "none";
+    }, 300);
   };
 }

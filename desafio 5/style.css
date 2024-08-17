@@ -8,6 +8,38 @@ body {
   margin: 0;
 }
 
+textarea {
+  resize: none;
+}
+
+/* Estilize a barra de rolagem */
+*::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
+  width: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+/* Estilize o indicador da barra de rolagem */
+*::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+/* Estilize o indicador da barra de rolagem quando estiver sendo arrastado */
+*::-webkit-scrollbar-thumb:hover,
+textarea::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Estilize a trilha da barra de rolagem */
+*::-webkit-scrollbar-track,
+textarea::-webkit-scrollbar-track {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
 button {
   padding: 10px;
   background: #28a745;
@@ -15,10 +47,24 @@ button {
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
 button:hover {
   background: #218838;
+}
+
+input[type="checkbox"]{
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  accent-color: #1E201E;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #1E201E;
+  border: 2px solid #3C3D37;
+  transition: background-color 0.3s ease, border 0.3s ease;
 }
 
 .todo-container {
@@ -26,7 +72,8 @@ button:hover {
   flex-direction: column;
   align-items: center;
   background: #00000000;
-  width: 800px;
+  width: 80%;
+  max-width: 900px;
 }
 
 h1 {
@@ -42,14 +89,13 @@ h1 {
 }
 
 .todo-task input[type="text"] {
-  width: 100%;
+  width: 90%;
   padding: 10px;
-  margin-right: 10px;
-  border: none;
   color: #fff;
   border: 1px solid #3C3D37;
   background-color: #3C3D37;
   border-radius: 3px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .todo-task input[type="text"]::placeholder {
@@ -63,22 +109,32 @@ h1 {
 
 .titulo-task {
   display: flex;
+  flex-direction: column;
   width: 100%;
+  position: relative;
 }
 
 .categoria-task {
   display: flex;
+  flex-direction: column;
   width: 100%;
+  position: relative;
 }
 
 .input-error {
-  border: 2px solid #dc3545;
+  border: 2px solid #dc3545 !important;
+  transition: border-color 0.3s ease;
 }
 
 .error-message {
   display: none;
   color: #dc3545;
-  font-size: 10px;
+  font-size: 12px;
+  margin-top: 5px;
+  position: absolute;
+  top: 100%; /* Position it below the input field */
+  left: 0;
+  width: 100%;
 }
 
 .filter-category {
@@ -104,29 +160,6 @@ ul {
   overflow: auto;
 }
 
-ul::-webkit-scrollbar {
-  width: 8px;
-}
-
-ul::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 20px;
-}
-
-ul::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 20px;
-}
-
-ul::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* Estilo para Firefox */
-ul {
-  scrollbar-width: thin;
-  scrollbar-color: #888 #f1f1f1;
-}
 
 li {
   background: #3C3D37;
@@ -140,11 +173,14 @@ li {
   align-items: center;
   box-sizing: border-box;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
 li:hover {
   background: #343534;
 }
+
+
 
 li span {
   flex: 1;
@@ -170,7 +206,7 @@ li.done span {
 }
 
 li.done button {
-  background: #c82333;
+  background: #a5434c;
   text-decoration: none;
 }
 
@@ -186,9 +222,14 @@ li button:hover {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.modal.show {
+  display: block;
+  opacity: 1;
 }
 
 .modal-content {
@@ -198,8 +239,46 @@ li button:hover {
   margin: 15% auto;
   padding: 20px;
   width: 80%;
+  max-width: 900px;
   height: 400px;
   border-radius: 3px;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal.show .modal-content {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+
+.modal-content label {
+  color: #fff;
+  font-size: 15px;
+}
+
+.modal-content span {
+  position: absolute;
+  top: 5px;
+  right: 11px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 25px;
+  transition: color 0.3s ease;
+}
+
+.modal-content span:hover {
+  color: #aaa;
 }
 
 .modal-content input[type="text"] {
@@ -216,8 +295,10 @@ li button:hover {
 }
 
 .modal-content textarea {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  height: auto;
+  min-height: 20%;
   padding: 10px;
   border: none;
   margin: 10px 0;
@@ -228,6 +309,7 @@ li button:hover {
   font-size: 20px;
   box-sizing: border-box;
 }
+
 .modal-content button {
   margin: 10px 0;
 }
@@ -242,7 +324,7 @@ li button:hover {
 
 .close {
   color: #aaa;
-  float: right;
+  float: left;
   font-size: 28px;
   font-weight: bold;
 }
@@ -252,4 +334,38 @@ li button:hover {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .todo-task {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .todo-task input[type="text"] {
+    width: 80%;
+  }
+
+  ul {
+    width: 100%;
+  }
+
+  li {
+    width: 100%;
+  }
+
+  .modal-content {
+    width: 90%; 
+    padding: 10px;
+    box-sizing: border-box; 
+  }
+
+  .modal-content input[type="text"] {
+    font-size: 20px;
+  }
+
+  .modal-content textarea {
+    font-size: 15px;
+  }
+  
 }
