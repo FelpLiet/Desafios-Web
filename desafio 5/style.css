@@ -261,6 +261,12 @@ li button:hover {
   animation: modalFadeIn 0.3s ease-out;
 }
 
+.modal-content .error-message {
+  position: relative;
+  top: -3%;
+  font-size: 15px;
+}
+
 
 .modal-content label {
   color: #fff;

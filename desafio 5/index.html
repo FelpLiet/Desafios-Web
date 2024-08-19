@@ -12,12 +12,11 @@
         <span class="close">&times;</span>
         <label for="edit-task-text">Titulo da tarefa</label>
         <input type="text" id="edit-task-text" placeholder="Título da Tarefa" />
+        <div id="modal-task-error" class="error-message">Por favor, insira um título para a tarefa.</div>
         <label for="edit-task-category">Categoria</label>
         <input type="text" id="edit-task-category" placeholder="Categoria" />
-        <textarea
-          id="edit-task-description"
-          placeholder="Descrição da Tarefa"
-        ></textarea>
+        <div id="modal-category-error" class="error-message">Por favor, insira uma categoria para a tarefa.</div>
+        <textarea id="edit-task-description" placeholder="Descrição da Tarefa"></textarea>
         <button id="save-task">Salvar</button>
         <button id="delete-task">Apagar</button>
       </div>

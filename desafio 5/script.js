@@ -71,9 +71,12 @@ function addTask() {
   });
   li.appendChild(button);
 
-  document.getElementById("task-list").appendChild(li);
+  const taskList = document.getElementById("task-list");
+  taskList.insertBefore(li, taskList.firstChild);
+
   document.getElementById("new-task").value = "";
   document.getElementById("new-category").value = "";
+  
 
   updateCategoryFilter();
 }
@@ -137,9 +140,16 @@ function openEditModal(task, span) {
   const saveButton = document.getElementById("save-task");
   const deleteButton = document.getElementById("delete-task");
 
-  document.getElementById("edit-task-text").value = task.text;
-  document.getElementById("edit-task-category").value = task.category;
-  document.getElementById("edit-task-description").value = task.description;
+  const taskTextInput = document.getElementById("edit-task-text");
+  const taskCategoryInput = document.getElementById("edit-task-category");
+  const taskDescriptionInput = document.getElementById("edit-task-description");
+
+  const taskError = document.getElementById("modal-task-error");
+  const categoryError = document.getElementById("modal-category-error");
+
+  taskTextInput.value = task.text;
+  taskCategoryInput.value = task.category;
+  taskDescriptionInput.value = task.description;
 
   modal.style.display = "block";
   modal.classList.add("show");
@@ -161,15 +171,32 @@ function openEditModal(task, span) {
   };
 
   saveButton.onclick = function () {
-    task.text = document.getElementById("edit-task-text").value;
-    task.category = document.getElementById("edit-task-category").value;
-    task.description = document.getElementById("edit-task-description").value;
-    span.textContent = task.text;
-    span.title = task.description;
-    modal.classList.remove("show");
-    setTimeout(() => {
-      modal.style.display = "none";
-    }, 300);
+    const taskText = taskTextInput.value.trim();
+    const taskCategory = taskCategoryInput.value.trim();
+
+    if (!taskText) {
+      taskError.style.display = "block";
+    } else {
+      taskError.style.display = "none";
+    }
+
+    if (!taskCategory) {
+      categoryError.style.display = "block";
+    } else {
+      categoryError.style.display = "none";
+    }
+
+    if (taskText && taskCategory) {
+      task.text = taskText;
+      task.category = taskCategory;
+      task.description = taskDescriptionInput.value.trim();
+      span.textContent = task.text;
+      span.title = task.description;
+      modal.classList.remove("show");
+      setTimeout(() => {
+        modal.style.display = "none";
+      }, 300);
+    }
   };
 
   deleteButton.onclick = function () {
